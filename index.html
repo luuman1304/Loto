@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loto Tết Nguyên Đán</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="hero__badge">Tết Nguyên Đán 2025</p>
+      <h1>Loto Xuân – Sảnh Chơi Đậm Chất Việt</h1>
+      <p class="hero__subtitle">
+        Đón lộc đầu năm với trò loto rộn ràng, chúc mừng năm mới, kết nối bạn bè.
+      </p>
+      <div class="hero__actions">
+        <button class="btn btn--primary" data-scroll="auth">Chơi ngay</button>
+        <button class="btn btn--ghost" data-scroll="lobby">Khám phá sảnh chờ</button>
+      </div>
+    </div>
+    <div class="hero__art">
+      <div class="lantern"></div>
+      <div class="lantern lantern--small"></div>
+      <div class="lantern lantern--large"></div>
+      <div class="hero__flowers"></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="auth" class="section auth">
+      <div class="section__header">
+        <h2>Chọn cách tham gia</h2>
+        <p>Chơi nhanh với tư cách khách hoặc đăng nhập để lưu lịch sử và nhận ưu đãi lộc xuân.</p>
+      </div>
+      <div class="auth__grid">
+        <div class="card">
+          <h3>Chơi ngay với khách</h3>
+          <p>Không cần tài khoản, vào sảnh chờ và chọn phòng phù hợp.</p>
+          <button class="btn btn--primary" id="guestPlay">Vào sảnh với khách</button>
+        </div>
+        <div class="card">
+          <h3>Đăng nhập</h3>
+          <form id="loginForm">
+            <label>
+              Email
+              <input type="email" name="email" placeholder="tet@loto.vn" required />
+            </label>
+            <label>
+              Mật khẩu
+              <input type="password" name="password" placeholder="••••••" required />
+            </label>
+            <button class="btn btn--primary" type="submit">Đăng nhập</button>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Đăng ký tài khoản</h3>
+          <form id="registerForm">
+            <label>
+              Họ và tên
+              <input type="text" name="name" placeholder="Nguyễn Lộc" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="loc@loto.vn" required />
+            </label>
+            <label>
+              Mật khẩu
+              <input type="password" name="password" placeholder="••••••" required />
+            </label>
+            <button class="btn btn--ghost" type="submit">Tạo tài khoản</button>
+          </form>
+        </div>
+      </div>
+      <div class="auth__note" id="authStatus">Chào mừng! Hãy chọn cách tham gia.</div>
+    </section>
+
+    <section id="lobby" class="section lobby">
+      <div class="section__header">
+        <h2>Sảnh chờ loto</h2>
+        <p>Chọn phòng (2-16 người), vào ngẫu nhiên hoặc tự tạo phòng mới.</p>
+      </div>
+      <div class="lobby__controls">
+        <button class="btn btn--primary" id="randomRoom">Vào phòng ngẫu nhiên</button>
+        <button class="btn btn--ghost" id="createRoom">Tạo phòng mới</button>
+        <div class="lobby__stats">
+          <span>Người chơi trực tuyến: <strong id="onlineCount">128</strong></span>
+          <span>Phòng đang mở: <strong id="roomCount">8</strong></span>
+        </div>
+      </div>
+      <div class="lobby__list" id="roomList"></div>
+    </section>
+
+    <section id="room" class="section room hidden">
+      <div class="section__header">
+        <h2 id="roomTitle">Phòng Loto</h2>
+        <p>Cần ít nhất 2 người và tối đa 16 người. Tất cả sẵn sàng để chủ phòng bắt đầu.</p>
+      </div>
+      <div class="room__grid">
+        <div class="card room__players">
+          <div class="room__header">
+            <h3>Người chơi trong phòng</h3>
+            <span class="room__tag" id="roomStatus">Đang chờ</span>
+          </div>
+          <ul id="playerList"></ul>
+          <div class="room__actions">
+            <button class="btn btn--ghost" id="toggleReady">Sẵn sàng</button>
+            <button class="btn btn--primary" id="startGame">Chủ phòng bắt đầu</button>
+            <button class="btn btn--ghost" id="leaveRoom">Rời phòng</button>
+          </div>
+        </div>
+        <div class="card room__game">
+          <div class="room__header">
+            <h3>Ván chơi</h3>
+            <span class="room__pot">Đậu cược: <strong id="potValue">0</strong></span>
+          </div>
+          <div class="game__numbers">
+            <div class="game__current">
+              <p>Số vừa ra</p>
+              <div class="current-number" id="currentNumber">--</div>
+              <button class="btn btn--primary" id="drawNumber">Bốc số</button>
+            </div>
+            <div class="game__history">
+              <p>Lịch sử số</p>
+              <div id="numberHistory" class="history"></div>
+            </div>
+          </div>
+          <div class="game__card">
+            <div class="card__header">
+              <h4>Vé loto của bạn</h4>
+              <button class="btn btn--ghost" id="claimWin">Kinh!</button>
+            </div>
+            <div id="lotoCard" class="loto"></div>
+            <p class="game__note">Chạm vào số trên vé khi thấy số xuất hiện trên màn hình.</p>
+          </div>
+          <div class="game__result" id="gameResult">Chưa có người thắng.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Chúc mừng năm mới - Vạn sự như ý, phát tài phát lộc cùng Loto Tết!</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
