@@ -1,0 +1,333 @@
+:root {
+  color-scheme: light;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  --red: #d62828;
+  --gold: #fcbf49;
+  --cream: #fef9e7;
+  --ink: #2b2d42;
+  --green: #2a9d8f;
+  --shadow: 0 18px 45px rgba(19, 15, 64, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  padding: 56px 8vw;
+  background: linear-gradient(120deg, #fff0d7, #fff7e8);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--red);
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 3vw, 3.4rem);
+  margin-bottom: 12px;
+}
+
+.hero__subtitle {
+  font-size: 1.05rem;
+  max-width: 520px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.hero__art {
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.lantern {
+  width: 120px;
+  height: 160px;
+  background: radial-gradient(circle at top, #ffd6a5, var(--red));
+  border-radius: 50% 50% 40% 40%;
+  box-shadow: var(--shadow);
+  position: absolute;
+  top: 10px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.lantern--small {
+  width: 80px;
+  height: 110px;
+  left: 40px;
+  top: 120px;
+  animation-delay: 1.2s;
+}
+
+.lantern--large {
+  width: 150px;
+  height: 190px;
+  right: 30px;
+  top: 50px;
+  animation-delay: 0.4s;
+}
+
+.hero__flowers {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffe066 20%, transparent 20%),
+    radial-gradient(circle, #ffd6a5 25%, transparent 25%),
+    radial-gradient(circle, #ffb703 30%, transparent 30%);
+  background-position: center;
+  background-size: 60px 60px;
+  opacity: 0.5;
+}
+
+.section {
+  padding: 48px 8vw;
+}
+
+.section__header {
+  max-width: 680px;
+  margin-bottom: 28px;
+}
+
+.section__header h2 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.auth__grid,
+.room__grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.card h3 {
+  margin-bottom: 12px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  font-size: 0.95rem;
+}
+
+.btn {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn--primary {
+  background: var(--red);
+  color: #fff;
+}
+
+.btn--ghost {
+  background: #fff;
+  border: 1px solid var(--red);
+  color: var(--red);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(214, 40, 40, 0.2);
+}
+
+.auth__note {
+  margin-top: 18px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.lobby__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.lobby__stats {
+  display: flex;
+  gap: 16px;
+  font-weight: 600;
+}
+
+.lobby__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.room__players ul {
+  list-style: none;
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.room__players li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: #f9f9f9;
+  border-radius: 12px;
+}
+
+.room__tag {
+  background: var(--gold);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.room__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.room__game {
+  display: grid;
+  gap: 18px;
+}
+
+.room__pot {
+  font-weight: 600;
+  color: var(--red);
+}
+
+.game__numbers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.current-number {
+  font-size: 3rem;
+  font-weight: 700;
+  background: var(--gold);
+  width: 100px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  margin: 10px 0;
+}
+
+.history {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.history span {
+  background: #fff3c4;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.loto {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.loto button {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #e2e2e2;
+  background: #fff;
+  font-weight: 600;
+}
+
+.loto button.active {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+}
+
+.game__result {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #fff7e8;
+  font-weight: 600;
+}
+
+.footer {
+  text-align: center;
+  padding: 24px;
+  background: #fff0d7;
+  font-weight: 600;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding: 40px 6vw;
+  }
+
+  .room__grid {
+    grid-template-columns: 1fr;
+  }
+}
